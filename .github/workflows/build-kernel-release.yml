@@ -213,6 +213,9 @@ jobs:
           if [ "$ksu_type" == "KSUN" ]; then
             KSU_REPO_OWNER="KernelSU-Next"
             KSU_REPO_NAME="KernelSU-Next"
+          elif [ "$ksu_type" == "SUKISU" ]; then
+            KSU_REPO_OWNER="SukiSU-Ultra"
+            KSU_REPO_NAME="SukiSU-Ultra"
           else
             KSU_REPO_OWNER="tiann"
             KSU_REPO_NAME="KernelSU"
@@ -1067,6 +1070,11 @@ jobs:
           | **KernelSU Branch** | \`$ksu_display\` |
           | **KernelSU Version** | \`$ksu_ver_global\` |
           EOF
+          elif [ "$ksu_type" == "SUKISU" ]; then
+            cat << EOF >> release_notes.md
+          | **SukiSU Branch** | \`$ksu_display\` |
+          | **SukiSU Version** | \`$ksu_ver_global\` |
+          EOF
           else
             cat << EOF >> release_notes.md
           | **Unknown KernelSU Fork Branch** | \`\` |
@@ -1100,6 +1108,10 @@ jobs:
           elif [ "$ksu_type" == "KSU" ]; then
             cat << EOF >> release_notes.md
           - **KernelSU** - Kernel-level root solution
+          EOF
+          elif [ "$ksu_type" == "SUKISU" ]; then
+            cat << EOF >> release_notes.md
+          - **SukiSU** - SukiSU-Ultra kernel-level root solution
           EOF
           fi
           cat << EOF >> release_notes.md
