@@ -1010,12 +1010,12 @@ runs:
         # 彻底锁定 KSU API 版本 = 官方 SukiSU Manager v4.1.3 (40796)，直接替换动态计算行
         # (SukiSU Makefile 按 GitHub 最新提交数自动算版本，会导致 Manager 版本不匹配)
         python3 - <<'PYEOF'
-import re
-p = "Makefile"
-s = open(p).read()
-s = re.sub(r'KSU_VERSION\s*:=\s*\$\(if[^\n]*', "KSU_VERSION     := 40796", s, count=1)
-open(p, "w").write(s)
-PYEOF
+        import re
+        p = "Makefile"
+        s = open(p).read()
+        s = re.sub(r'KSU_VERSION\s*:=\s*\$\(if[^\n]*', "KSU_VERSION     := 40796", s, count=1)
+        open(p, "w").write(s)
+        PYEOF
         echo "KSU_VERSION := 40796" >> Makefile
         KSU_VERSION=40796
         KSU_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "unknown")
